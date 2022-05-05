@@ -1,5 +1,14 @@
 ## Laravel 8 Example
 
+### Admin api
+
+```
+sail up -d
+
+sail artisan make:controller UserController
+
+
+```
 
 ### existing project
 
