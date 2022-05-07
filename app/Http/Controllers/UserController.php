@@ -18,7 +18,8 @@ class UserController extends Controller
     public function index()
     {
         //return User::all();
-        return User::paginate();
+        //return User::paginate();
+        return User::with('role')->paginate();
     }
 
     public function show($id)
@@ -39,7 +40,7 @@ class UserController extends Controller
 //        );
 
         $user = User::create(
-            $request->only('first_name', 'last_name', 'email')
+            $request->only('first_name', 'last_name', 'email', 'role_id')
             + ['password' => Hash::make(1234)]
         );
 
@@ -58,7 +59,7 @@ class UserController extends Controller
 //            ]
 //        );
 
-        $user->update($request->only('first_name','last_name','email'));
+        $user->update($request->only('first_name','last_name','email', 'role_id'));
 
         return response($user, Response::HTTP_ACCEPTED);
     }
