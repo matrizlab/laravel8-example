@@ -29,4 +29,5 @@ use Illuminate\Support\Facades\Route;
 //Route::delete('users/{id}', '\App\Http\Controllers\UserController@destroy');
 
 Route::apiResource('users', '\App\Http\Controllers\UserController');
+Route::post('login', '\App\Http\Controllers\AuthController@login');
 
