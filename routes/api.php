@@ -33,6 +33,13 @@ Route::post('login', '\App\Http\Controllers\AuthController@login')->name('login'
 Route::post('register', '\App\Http\Controllers\AuthController@register')->name('register');
 
 Route::group(['middleware' => 'auth:api'], function () {
+
+    // Profile
+    Route::get('user', '\App\Http\Controllers\UserController@user');
+    Route::put('users/info', '\App\Http\Controllers\UserController@updateInfo');
+    Route::put('users/password', '\App\Http\Controllers\UserController@updatePassword');
+
+    // Users
     Route::apiResource('users', '\App\Http\Controllers\UserController');
 });
 
