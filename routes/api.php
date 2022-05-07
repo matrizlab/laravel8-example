@@ -18,6 +18,15 @@ use Illuminate\Support\Facades\Route;
 //    return $request->user();
 //});
 
-Route::get('users', function (){
-    return 'users';
-});
+//Route::get('users', function (){
+//    return 'users';
+//});
+
+//Route::get('users', '\App\Http\Controllers\UserController@index');
+//Route::post('users', '\App\Http\Controllers\UserController@store');
+//Route::get('users/{id}', '\App\Http\Controllers\UserController@show');
+//Route::put('users/{id}', '\App\Http\Controllers\UserController@update');
+//Route::delete('users/{id}', '\App\Http\Controllers\UserController@destroy');
+
+Route::apiResource('users', '\App\Http\Controllers\UserController');
+
