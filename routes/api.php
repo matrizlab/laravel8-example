@@ -28,6 +28,12 @@ use Illuminate\Support\Facades\Route;
 //Route::put('users/{id}', '\App\Http\Controllers\UserController@update');
 //Route::delete('users/{id}', '\App\Http\Controllers\UserController@destroy');
 
-Route::apiResource('users', '\App\Http\Controllers\UserController');
-Route::post('login', '\App\Http\Controllers\AuthController@login');
+//Route::apiResource('users', '\App\Http\Controllers\UserController');
+Route::post('login', '\App\Http\Controllers\AuthController@login')->name('login');
+Route::post('register', '\App\Http\Controllers\AuthController@register')->name('register');
+
+Route::group(['middleware' => 'auth:api'], function () {
+    Route::apiResource('users', '\App\Http\Controllers\UserController');
+});
+
 
