@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\ProductController;
 use App\Http\Controllers\RoleController;
 use App\Http\Controllers\UserController;
 use Illuminate\Http\Request;
@@ -45,7 +46,11 @@ Route::group(['middleware' => 'auth:api'], function () {
     // Users
     Route::apiResource('users', UserController::class);
 
+    //Roles
     Route::apiResource('roles', RoleController::class);
+
+    //Products
+    Route::apiResource('products', ProductController::class);
 });
 
 
