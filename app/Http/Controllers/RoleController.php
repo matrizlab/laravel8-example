@@ -6,6 +6,7 @@ use App\Http\Resources\RoleResource;
 use App\Models\Role;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Gate;
 use Symfony\Component\HttpFoundation\Response;
 
 class RoleController extends Controller
@@ -13,12 +14,16 @@ class RoleController extends Controller
 
     public function index()
     {
+        Gate::authorize('view', 'roles');
+
         return RoleResource::collection(Role::all());
     }
 
 
     public function store(Request $request)
     {
+        Gate::authorize('edit', 'roles');
+
         $role = Role::create(
             $request->only('name')
         );
@@ -38,12 +43,16 @@ class RoleController extends Controller
 
     public function show($id)
     {
+        Gate::authorize('view', 'roles');
+
         return new RoleResource(Role::find($id));
     }
 
 
     public function update(Request $request, $id)
     {
+        Gate::authorize('edit', 'roles');
+
         $role  = Role::find($id);
 
         $role->update($request->only('name'));
@@ -65,6 +74,8 @@ class RoleController extends Controller
 
     public function destroy($id)
     {
+        Gate::authorize('edit', 'roles');
+
         Role::destroy($id);
 
         return response(null, Response::HTTP_NO_CONTENT);
