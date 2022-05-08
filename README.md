@@ -83,4 +83,30 @@ add to index app/Http/Controllers/UserController.php
      */
 ```
 
+add to app/Http/Controllers/Controller.php
+```
+* @OA\SecurityScheme(
+*   securityScheme="bearerAuth",
+*   type="http",
+*   scheme="bearer"
+* )
+```
+sail artisan l5-swagger:generate
+
+sail artisan make:command TokenCommand
+
+sail artisan token:generate 1
+
+add security to index app/Http/Controllers/UserController.php
+```
+    /**
+     * @OA\Get(path="/users",
+     *   security={{"bearerAuth":{}}},
+     *   @OA\Response(response="200",
+     *     description="User Collection",
+     *   ),
+     * )
+     */
+```
+
 sail artisan l5-swagger:generate
