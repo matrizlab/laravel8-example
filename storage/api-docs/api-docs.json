@@ -10,7 +10,7 @@
     },
     "servers": [
         {
-            "url": "http://localhost",
+            "url": "http://localhost/api",
             "description": "Admin API Server"
         }
     ],

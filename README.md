@@ -69,7 +69,7 @@ add to app/Http/Controllers/Controller.php
 
 add to .env
 ```
-L5_SWAGGER_CONST_HOST=http://localhost
+L5_SWAGGER_CONST_HOST=http://localhost/api
 ```
 
 add to index app/Http/Controllers/UserController.php
