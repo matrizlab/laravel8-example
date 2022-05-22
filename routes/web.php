@@ -14,5 +14,8 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    dispatch(function (){
+        logger('send to queue');
+    })->delay(now()->addMinutes(2));
+    return 'finish';
 });
